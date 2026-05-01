@@ -10,5 +10,5 @@ put [this](https://github.com/Brokoli5191/.config/tree/main/spotify) (the folder
 # Discord
 
 Vencord with theme
-turn on "enable custom css" & paste content from [quickcss.txt](https://github.com/Brokoli5191/.config/tree/main/discord/quickcss) into "edit quickcss" 
+turn on "enable custom css" & paste content from [quickcss.txt](https://github.com/Brokoli5191/.config/tree/main/discord/quickcss.txt) into "edit quickcss" 
 
