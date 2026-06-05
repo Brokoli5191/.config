@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spicetify · text — UI kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    height: 100vh; width: 100vw; overflow: hidden;
+    background: #000;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 400;
+    letter-spacing: -0.05ch;
+  }
+  #root { width: 100%; height: 100%; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsla(235,15%,53%,0.3); }
+  ::-webkit-scrollbar-thumb:hover { background: #b4befe; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="TopBar.jsx"></script>
+<script type="text/babel" src="Sidebar.jsx"></script>
+<script type="text/babel" src="EntityHeader.jsx"></script>
+<script type="text/babel" src="TrackList.jsx"></script>
+<script type="text/babel" src="NowPlayingBar.jsx"></script>
+
+<script type="text/babel">
+const PLAYLISTS = {
+  liked: {
+    kind: 'liked songs', title: 'liked songs', owner: 'brokoli', count: 8, duration: '32 min',
+    tracks: [
+      { id: 'a', title: 'prelude in c · BWV 846', artist: 'j. s. bach',           album: 'wtc, book 1',          duration: '2:18' },
+      { id: 'b', title: 'gymnopédie no. 1',       artist: 'erik satie',           album: 'three gymnopédies',    duration: '3:42' },
+      { id: 'c', title: 'clair de lune',           artist: 'claude debussy',       album: 'suite bergamasque',    duration: '5:20' },
+      { id: 'd', title: 'metamorphosis two',       artist: 'philip glass',         album: 'solo piano',           duration: '6:45' },
+      { id: 'e', title: 'nuvole bianche',          artist: 'ludovico einaudi',     album: 'una mattina',          duration: '5:58' },
+      { id: 'f', title: 'arrival of the birds',    artist: 'the cinematic orchestra', album: 'the crimson wing', duration: '2:48' },
+      { id: 'g', title: 'spiegel im spiegel',      artist: 'arvo pärt',             album: 'alina',                duration: '8:22' },
+      { id: 'h', title: 'merry christmas mr lawrence', artist: 'ryuichi sakamoto', album: 'merry christmas…',    duration: '4:36' },
+    ],
+  },
+  mocha: {
+    kind: 'playlist', title: 'mocha mixtape', owner: 'brokoli', count: 5, duration: '21 min',
+    tracks: [
+      { id: 'm1', title: 'ʚïɞ',         artist: 'tycho',           album: 'awake',           duration: '5:32' },
+      { id: 'm2', title: 'an ending',    artist: 'brian eno',       album: 'apollo',          duration: '4:21' },
+      { id: 'm3', title: 'porcelain',    artist: 'moby',            album: 'play',            duration: '4:01' },
+      { id: 'm4', title: 'fluorescence', artist: 'jon hopkins',     album: 'immunity',        duration: '4:48' },
+      { id: 'm5', title: 'avril 14th',   artist: 'aphex twin',      album: 'drukqs',          duration: '2:05' },
+    ],
+  },
+  tui: {
+    kind: 'playlist', title: 'tui ambient', owner: 'brokoli', count: 4, duration: '24 min',
+    tracks: [
+      { id: 't1', title: 'rhubarb',     artist: 'aphex twin', album: 'sav II',          duration: '7:42' },
+      { id: 't2', title: 'on1',         artist: 'aphex twin', album: 'sav II',          duration: '4:30' },
+      { id: 't3', title: 'avril 14th',  artist: 'aphex twin', album: 'drukqs',          duration: '2:05' },
+      { id: 't4', title: 'jynweythek',  artist: 'aphex twin', album: 'drukqs',          duration: '3:32' },
+    ],
+  },
+  lavender: {
+    kind: 'playlist', title: 'lavender hours', owner: 'brokoli', count: 3, duration: '14 min',
+    tracks: [
+      { id: 'l1', title: 'the night we met',  artist: 'lord huron', album: 'strange trails', duration: '3:28' },
+      { id: 'l2', title: 'mystery of love',   artist: 'sufjan stevens', album: 'call me by your name', duration: '4:08' },
+      { id: 'l3', title: 'sunsetz',           artist: 'cigarettes after sex', album: 'i.', duration: '4:14' },
+    ],
+  },
+  monaco: {
+    kind: 'playlist', title: 'monospace classics', owner: 'brokoli', count: 4, duration: '18 min',
+    tracks: [
+      { id: 'mc1', title: 'on green dolphin street', artist: 'miles davis',      album: '1958 miles', duration: '5:42' },
+      { id: 'mc2', title: 'so what',                 artist: 'miles davis',      album: 'kind of blue', duration: '9:22' },
+      { id: 'mc3', title: 'naima',                   artist: 'john coltrane',    album: 'giant steps', duration: '4:21' },
+      { id: 'mc4', title: 'take five',               artist: 'dave brubeck',     album: 'time out',    duration: '5:24' },
+    ],
+  },
+  study: {
+    kind: 'playlist', title: 'study slow', owner: 'brokoli', count: 3, duration: '12 min',
+    tracks: [
+      { id: 's1', title: 'sleepwalker', artist: 'nils frahm',  album: 'felt',             duration: '4:18' },
+      { id: 's2', title: 'says',        artist: 'nils frahm',  album: 'spaces',           duration: '8:25' },
+      { id: 's3', title: 'a stream',    artist: 'hauschka',    album: 'a different forest', duration: '3:42' },
+    ],
+  },
+  home:   { kind: 'home', title: 'home', owner: '', count: 0, duration: '', tracks: [] },
+  search: { kind: 'search', title: 'search', owner: '', count: 0, duration: '', tracks: [] },
+  radio:  { kind: 'radio', title: 'radio', owner: '', count: 0, duration: '', tracks: [] },
+};
+
+function App() {
+  const [active, setActive] = React.useState('mocha');
+  const [query, setQuery] = React.useState('');
+  const [currentTrack, setCurrentTrack] = React.useState({
+    id: 'm1', title: 'ʚïɞ', artist: 'tycho', album: 'awake', duration: '5:32', sourceId: 'mocha',
+  });
+  const [playing, setPlaying] = React.useState(true);
+  const [progress, setProgress] = React.useState(38);
+
+  // simulate playhead movement
+  React.useEffect(() => {
+    if (!playing) return;
+    const i = setInterval(() => setProgress((p) => (p >= 100 ? 0 : p + 0.5)), 300);
+    return () => clearInterval(i);
+  }, [playing]);
+
+  const playlist = PLAYLISTS[active] || PLAYLISTS.mocha;
+
+  const handlePlayTrack = (id) => {
+    const t = playlist.tracks.find((x) => x.id === id);
+    if (!t) return;
+    setCurrentTrack({ ...t, sourceId: active });
+    setPlaying(true);
+    setProgress(0);
+  };
+
+  const handlePlaylistPlay = () => {
+    if (!playlist.tracks.length) return;
+    if (currentTrack.sourceId !== active) {
+      const t = playlist.tracks[0];
+      setCurrentTrack({ ...t, sourceId: active });
+      setProgress(0);
+    }
+    setPlaying((p) => !p);
+  };
+
+  const isThisPlaying = playing && currentTrack.sourceId === active;
+
+  return (
+    <div style={{
+      display: 'flex', flexDirection: 'column', height: '100vh',
+      padding: 8, gap: 8, boxSizing: 'border-box', background: '#000',
+    }}>
+      <Panel hoverable={false} style={{ flexShrink: 0 }}>
+        <TopBar query={query} setQuery={setQuery} />
+      </Panel>
+
+      <div style={{ display: 'flex', gap: 8, flex: 1, minHeight: 0 }}>
+        <Sidebar activeItem={active} onSelect={setActive} />
+
+        <Panel style={{ flex: 1, minWidth: 0 }}>
+          {playlist.tracks.length > 0 ? (
+            <>
+              <EntityHeader {...playlist} onPlay={handlePlaylistPlay} playing={isThisPlaying} />
+              <TrackList
+                tracks={playlist.tracks}
+                currentTrackId={currentTrack.sourceId === active ? currentTrack.id : null}
+                playing={playing}
+                onPlayTrack={handlePlayTrack}
+              />
+            </>
+          ) : (
+            <div style={{ padding: '40px 24px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div style={{ fontSize: 10.5, color: tokens.text5, textTransform: 'lowercase' }}>[ {playlist.kind} ]</div>
+              <h1 style={{
+                margin: 0, fontFamily: tokens.ascii, fontSize: 56, lineHeight: 1,
+                color: tokens.text2, textTransform: 'lowercase', letterSpacing: 0,
+              }}>{playlist.title}</h1>
+              <div style={{ color: tokens.text4, fontSize: 12 }}>
+                this view is intentionally sparse — the theme is text-first. pick a playlist from the left rail to see tracks.
+              </div>
+            </div>
+          )}
+        </Panel>
+      </div>
+
+      <NowPlayingBar
+        track={currentTrack}
+        playing={playing}
+        onTogglePlay={() => setPlaying((p) => !p)}
+        progress={progress}
+        setProgress={setProgress}
+      />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

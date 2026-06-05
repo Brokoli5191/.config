@@ -1,0 +1,386 @@
+/* =========================================================
+   CATPPUCCIN MOCHA THEME SYSTEM — colors_and_type.css
+   ---------------------------------------------------------
+   A TUI-style adaptation of Catppuccin Mocha applied to
+   Spotify (Spicetify "text" theme) and Discord (Vencord
+   "system24"). Black-base, lavender accent, monospace,
+   sharp corners, panel labels, ASCII headers.
+   =========================================================
+   Sources of truth:
+     source/spotify/text-theme/color.ini
+     source/spotify/text-theme/user.css
+     source/discord/quickcss.txt
+   ========================================================= */
+
+
+/* =========================================================
+   1. WEB FONTS
+   ---------------------------------------------------------
+   JetBrains Mono is self-hosted from /fonts (full 9-weight
+   italic + roman family, woff2). DM Mono + VT323 come from
+   Google Fonts. asciid comes from fonts.cdnfonts.com — VT323
+   is the practical fallback if it fails to load.
+   ========================================================= */
+
+/* --- JetBrains Mono (self-hosted, Spotify body face) --- */
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100; font-display: swap;
+  src: url('fonts/JetBrainsMono-Thin.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 100; font-display: swap;
+  src: url('fonts/JetBrainsMono-ThinItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 200; font-display: swap;
+  src: url('fonts/JetBrainsMono-ExtraLight.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 200; font-display: swap;
+  src: url('fonts/JetBrainsMono-ExtraLightItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 300; font-display: swap;
+  src: url('fonts/JetBrainsMono-Light.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 300; font-display: swap;
+  src: url('fonts/JetBrainsMono-LightItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 400; font-display: swap;
+  src: url('fonts/JetBrainsMono-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('fonts/JetBrainsMono-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 500; font-display: swap;
+  src: url('fonts/JetBrainsMono-MediumItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('fonts/JetBrainsMono-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 600; font-display: swap;
+  src: url('fonts/JetBrainsMono-SemiBoldItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 700; font-display: swap;
+  src: url('fonts/JetBrainsMono-BoldItalic.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 800; font-display: swap;
+  src: url('fonts/JetBrainsMono-ExtraBold.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: italic; font-weight: 800; font-display: swap;
+  src: url('fonts/JetBrainsMono-ExtraBoldItalic.woff2') format('woff2'); }
+
+/* --- DM Mono (Discord body face) + VT323 (asciid fallback) --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=VT323&display=swap');
+
+/* --- "asciid" — used for the oversized ASCII entity headers
+   in the Spicetify theme. Not on Google Fonts. VT323 fallback. --- */
+@import url('https://fonts.cdnfonts.com/css/asciid');
+
+
+/* =========================================================
+   2. CATPPUCCIN MOCHA — FULL PALETTE (reference)
+   ---------------------------------------------------------
+   The canonical 26 Mocha colors. The theme uses lavender
+   as accent and overrides surfaces to pure black.
+   ========================================================= */
+:root {
+  /* accents */
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo:  #f2cdcd;
+  --ctp-pink:      #f5c2e7;
+  --ctp-mauve:     #cba6f7;
+  --ctp-red:       #f38ba8;
+  --ctp-maroon:    #eba0ac;
+  --ctp-peach:     #fab387;
+  --ctp-yellow:    #f9e2af;
+  --ctp-green:     #a6e3a1;
+  --ctp-teal:      #94e2d5;
+  --ctp-sky:       #89dceb;
+  --ctp-sapphire:  #74c7ec;
+  --ctp-blue:      #89b4fa;
+  --ctp-lavender:  #b4befe; /* primary accent in this system */
+
+  /* text */
+  --ctp-text:      #cdd6f4;
+  --ctp-subtext1:  #bac2de;
+  --ctp-subtext0:  #a6adc8;
+
+  /* overlays */
+  --ctp-overlay2:  #9399b2;
+  --ctp-overlay1:  #7f849c;
+  --ctp-overlay0:  #6c7086;
+
+  /* surfaces */
+  --ctp-surface2:  #585b70;
+  --ctp-surface1:  #45475a;
+  --ctp-surface0:  #313244;
+
+  /* bases (NOTE: the theme overrides --bg with pure black,
+     these remain for reference / future Mocha-base variants) */
+  --ctp-base:      #1e1e2e;
+  --ctp-mantle:    #181825;
+  --ctp-crust:     #11111b;
+}
+
+
+/* =========================================================
+   3. SYSTEM TOKENS — BACKGROUNDS
+   ---------------------------------------------------------
+   The signature override: pure OLED black (#000) is the
+   canvas, with two near-black surfaces stepping up for
+   buttons and hover states.
+   ========================================================= */
+:root {
+  --bg-canvas:   #000000; /* main app background — pure black */
+  --bg-panel:    #000000; /* panel base (== canvas; the borders create separation, not fill) */
+  --bg-surface:  #1a1a1a; /* dark buttons, highlight rows */
+  --bg-surface-2:#2a2a2a; /* dark button — pressed/active */
+  --bg-floating: var(--bg-surface);
+
+  /* translucent interaction overlays */
+  --hover:    hsla(235, 15%, 53%, 0.10); /* hover */
+  --active:   hsla(235, 15%, 53%, 0.20); /* selected/clicked */
+  --active-2: hsla(235, 15%, 53%, 0.30); /* extra emphasis */
+  --message-hover: hsla(0, 0%, 0%, 0.10);
+}
+
+
+/* =========================================================
+   4. SYSTEM TOKENS — FOREGROUND TEXT
+   --------------------------------------------------------- */
+:root {
+  --fg-0: var(--bg-panel);             /* text on colored fills */
+  --fg-1: hsl(226, 64%, 95%);          /* primary white (over accent) */
+  --fg-2: var(--ctp-text);             /* headings + important */
+  --fg-3: var(--ctp-subtext1);         /* normal body */
+  --fg-4: var(--ctp-overlay1);         /* icons, channel names */
+  --fg-5: var(--ctp-surface2);         /* muted timestamps, disabled */
+
+  /* aliases that map to semantic roles */
+  --text-strong: var(--fg-2);
+  --text:        var(--fg-3);
+  --text-muted:  var(--fg-4);
+  --text-dim:    var(--fg-5);
+}
+
+
+/* =========================================================
+   5. SYSTEM TOKENS — ACCENT (LAVENDER)
+   ---------------------------------------------------------
+   #b4befe ≈ hsl(232, 97%, 85%). The theme defines a 5-stop
+   ramp so hover/active/click states stay on-brand.
+   ========================================================= */
+:root {
+  --accent-1: hsl(232, 97%, 90%); /* links, accent text */
+  --accent-2: hsl(232, 97%, 85%); /* DEFAULT lavender */
+  --accent-3: hsl(232, 97%, 85%); /* accent buttons */
+  --accent-4: hsl(232, 97%, 80%); /* buttons hover */
+  --accent-5: hsl(232, 97%, 75%); /* buttons pressed */
+  --accent-new: var(--accent-2);  /* replaces destructive red on mute/deafen */
+}
+
+
+/* =========================================================
+   6. SYSTEM TOKENS — STATUS & SEMANTICS
+   ---------------------------------------------------------
+   All semantic ramps are pulled from the Catppuccin
+   Mocha hue, lightened slightly to read on black.
+   ========================================================= */
+:root {
+  --red-1:    hsl(343, 81%, 80%);
+  --red-2:    hsl(343, 81%, 75%);  /* === --ctp-red === */
+  --red-3:    hsl(343, 81%, 75%);
+  --red-4:    hsl(343, 81%, 70%);
+  --red-5:    hsl(343, 81%, 65%);
+
+  --green-1:  hsl(115, 54%, 81%);
+  --green-2:  hsl(115, 54%, 76%);
+  --green-3:  hsl(115, 54%, 76%);
+  --green-4:  hsl(115, 54%, 71%);
+  --green-5:  hsl(115, 54%, 66%);
+
+  --blue-1:   hsl(199, 76%, 74%);
+  --blue-2:   hsl(199, 76%, 69%);
+  --blue-3:   hsl(199, 76%, 69%);
+  --blue-4:   hsl(199, 76%, 64%);
+  --blue-5:   hsl(199, 76%, 59%);
+
+  --yellow-1: hsl(41, 86%, 88%);
+  --yellow-2: hsl(41, 86%, 83%);
+  --yellow-3: hsl(41, 86%, 83%);
+  --yellow-4: hsl(41, 86%, 78%);
+  --yellow-5: hsl(41, 86%, 73%);
+
+  /* status / presence */
+  --status-online:    var(--green-2);
+  --status-dnd:       var(--red-2);
+  --status-idle:      var(--yellow-2);
+  --status-streaming: var(--accent-2);
+  --status-offline:   var(--fg-4);
+
+  --notification-error: #f38ba8;
+}
+
+
+/* =========================================================
+   7. SYSTEM TOKENS — BORDERS, RADII, SHADOWS, SPACING
+   ---------------------------------------------------------
+   Defining motif: hairline borders (1–2px), zero radius.
+   Borders, not shadows, do the heavy lifting of separation.
+   ========================================================= */
+:root {
+  --border-light:  var(--hover);
+  --border:        var(--active);
+  --border-hover:  var(--accent-2);
+  --button-border: hsla(0, 0%, 100%, 0.10);
+
+  --border-width:     1px; /* spicetify default */
+  --border-thickness: 2px; /* discord panels */
+  --divider-thickness: 4px;
+  --border-style: solid;
+  --border-hover-transition: 0.2s ease;
+
+  --radius: 0px; /* signature: NO rounded corners */
+  --radius-pill: 0px;
+
+  /* spacing — Discord uses `--gap: 12px` for panel gutters */
+  --gap-1: 4px;
+  --gap-2: 8px;
+  --gap-3: 12px; /* canonical panel gap */
+  --gap-4: 16px;
+  --gap-5: 24px;
+  --gap-6: 32px;
+
+  /* "Shadows" barely exist here. Reserved for hover only. */
+  --shadow-soft: 0 0 0 1px var(--border-hover);
+  --shadow-none: none;
+}
+
+
+/* =========================================================
+   8. TYPOGRAPHY — FAMILIES
+   ---------------------------------------------------------
+   - JetBrains Mono = Spotify (Spicetify) body
+   - DM Mono        = Discord (Vencord) body
+   - asciid / VT323 = oversized ASCII-art display headers
+   ========================================================= */
+:root {
+  --font-mono-spotify: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-mono-discord: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-mono:         var(--font-mono-spotify);
+  --font-ascii:        'asciid', 'VT323', monospace;
+  --font-code:         var(--font-mono);
+}
+
+
+/* =========================================================
+   9. TYPOGRAPHY — SCALE
+   ---------------------------------------------------------
+   Body sits at 14px / 1.2 line-height. Headings are
+   computed multipliers of body, ASCII-display headers
+   scale to 4× body size.
+   ========================================================= */
+:root {
+  --fs-body:   14px;
+  --fs-small:  12px;
+  --fs-xsmall: 11px;
+  --fs-h3:     16px;
+  --fs-h2:     20px;
+  --fs-h1:     24px;
+  --fs-display: calc(var(--fs-body) * 4); /* ascii hero size */
+
+  --lh-body: 1.2;
+  --lh-tight: 1;
+  --lh-relaxed: 1.4;
+
+  --fw-light:   300; /* Discord body weight */
+  --fw-regular: 400; /* Spotify body weight */
+  --fw-medium:  500; /* panel labels */
+  --fw-bold:    700;
+
+  --tracking-tight: -0.05ch; /* used across both apps for monospace readability */
+  --tracking-default: 0;
+}
+
+
+/* =========================================================
+   10. SEMANTIC TYPE STYLES
+   ---------------------------------------------------------
+   Plain element selectors so dropping the stylesheet into
+   a page produces the correct look without extra classes.
+   ========================================================= */
+html, body {
+  background: var(--bg-canvas);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tracking-tight);
+}
+
+h1, .h1 {
+  font-family: var(--font-ascii);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-regular);
+  color: var(--text-strong);
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  margin: 0 0 var(--gap-4) 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-medium);
+  color: var(--text-strong);
+  margin: var(--gap-5) 0 var(--gap-2) 0;
+  text-transform: lowercase;
+}
+
+h3, .h3 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  color: var(--text-strong);
+  margin: var(--gap-4) 0 var(--gap-1) 0;
+}
+
+p {
+  color: var(--text);
+  margin: 0 0 var(--gap-3) 0;
+}
+
+a {
+  color: var(--accent-1);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--border-hover-transition);
+}
+a:hover { color: var(--accent-4); }
+
+code, kbd, samp, pre {
+  font-family: var(--font-code);
+  font-size: 0.95em;
+  color: var(--text-strong);
+  background: var(--bg-surface);
+  padding: 0 0.3em;
+  border: 1px solid var(--border);
+}
+pre {
+  padding: var(--gap-3);
+  overflow: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--gap-4) 0;
+}
+
+small, .muted { color: var(--text-muted); font-size: var(--fs-small); }
+
+/* panel-label convention from system24 */
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xsmall);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  text-transform: lowercase;
+  letter-spacing: 0;
+  padding: var(--gap-1) var(--gap-2);
+}
+
+/* selection — Mocha lavender wash */
+::selection {
+  background: var(--accent-2);
+  color: var(--bg-canvas);
+}

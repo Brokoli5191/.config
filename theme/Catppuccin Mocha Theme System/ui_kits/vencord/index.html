@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vencord · system24 — UI kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    height: 100vh; width: 100vw; overflow: hidden;
+    background: #000;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-weight: 300;
+    letter-spacing: -0.05ch;
+  }
+  #root { width: 100%; height: 100%; }
+  /* simple scrollbar styling to stay on-brand */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsla(235,15%,53%,0.3); }
+  ::-webkit-scrollbar-thumb:hover { background: #b4befe; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="ServerList.jsx"></script>
+<script type="text/babel" src="ChannelList.jsx"></script>
+<script type="text/babel" src="ChatHeader.jsx"></script>
+<script type="text/babel" src="Message.jsx"></script>
+<script type="text/babel" src="Composer.jsx"></script>
+<script type="text/babel" src="MemberList.jsx"></script>
+<script type="text/babel" src="UserPanel.jsx"></script>
+<script type="text/babel" src="AsciiTitle.jsx"></script>
+
+<script type="text/babel">
+const SEED_MESSAGES = {
+  'design-system': [
+    { id: 1, author: 'brokoli',  ch: '★', color: tokens.accent, time: 'today at 14:02',
+      body: 'just pushed the new theme. should drop the patch tomorrow.' },
+    { id: 2, author: 'refact0r', ch: '◆', color: tokens.accent, time: 'today at 14:05',
+      body: '— system24 v2.1 ships with new ascii loaders', mention: 'brokoli', variant: 'mention' },
+    { id: 3, author: 'joe', ch: 'j', color: tokens.green, time: 'today at 14:07',
+      body: 'nice, will test on linux tonight',
+      replyTo: { author: 'brokoli', snippet: 'just pushed the new theme…' }, variant: 'reply' },
+    { id: 4, author: 'lina', ch: 'l', color: tokens.green, time: 'today at 14:11',
+      body: 'love the panel-label motif. so much cleaner than rounded cards' },
+    { id: 5, author: 'mira', ch: 'm', color: tokens.text3, time: 'today at 14:14',
+      body: 'one tiny thing — the dms button background looks ace at 44px but breaks at 32px. worth a look' },
+    { id: 6, author: 'brokoli', ch: '★', color: tokens.accent, time: 'today at 14:18',
+      body: 'good catch. swapping in a clearer crop, will ship in 2.1.1' },
+  ],
+  'welcome':       [{ id: 1, author: 'system24 bot', ch: '▒', color: tokens.text4, time: 'monday', body: 'welcome to catppuccin. say hi in #general.' }],
+  'announcements': [{ id: 1, author: 'brokoli', ch: '★', color: tokens.accent, time: 'tuesday', body: 'new release: system24 v2.1 — see #design-system' }],
+  'rules':         [{ id: 1, author: 'mods', ch: 'm', color: tokens.green, time: 'monday', body: '1. be excellent. 2. monospace only. 3. no rounded corners.' }],
+  'general':       [{ id: 1, author: 'oskar', ch: 'o', color: tokens.text3, time: 'today at 13:50', body: 'morning everyone' }],
+  'themes':        [{ id: 1, author: 'felix', ch: 'f', color: tokens.text3, time: 'today at 12:30', body: 'has anyone tried the mauve variant?' }],
+  'random':        [{ id: 1, author: 'andre', ch: 'a', color: tokens.text3, time: 'today at 11:10', body: '#random is muted, you wont see notifications' }],
+  'lounge':        [],
+  'studio':        [],
+};
+
+function App() {
+  const [server, setServer] = React.useState('cat');
+  const [channel, setChannel] = React.useState('design-system');
+  const [messages, setMessages] = React.useState(SEED_MESSAGES);
+  const [showMembers, setShowMembers] = React.useState(true);
+  const scrollRef = React.useRef(null);
+
+  const currentMessages = messages[channel] || [];
+
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [channel, currentMessages.length]);
+
+  const sendMessage = (text) => {
+    const next = {
+      id: Date.now(),
+      author: 'brokoli', ch: '★', color: tokens.accent, time: 'just now',
+      body: text,
+    };
+    setMessages((m) => ({ ...m, [channel]: [...(m[channel] || []), next] }));
+  };
+
+  return (
+    <div style={{
+      display: 'flex', gap: tokens.gap, padding: tokens.gap,
+      height: '100vh', boxSizing: 'border-box', background: '#000',
+    }}>
+      <ServerList activeServer={server} onSelectServer={setServer} />
+
+      <div style={{ display: 'flex', flexDirection: 'column', width: 220, gap: 0 }}>
+        <ChannelList activeChannel={channel} onSelectChannel={setChannel} />
+        <div style={{ height: tokens.gap }} />
+        <Panel style={{ flexShrink: 0 }}>
+          <UserPanel />
+        </Panel>
+      </div>
+
+      <Panel style={{ flex: 1, minWidth: 0 }}>
+        <ChatHeader channel={channel} memberCount={142} onShowMembers={() => setShowMembers(s => !s)} />
+        <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}>
+          {currentMessages.length === 0 ? (
+            <AsciiTitle name={channel} />
+          ) : (
+            <>
+              <AsciiTitle name={channel} />
+              <div style={{ padding: '8px 0' }}>
+                {currentMessages.map((msg) => <Message key={msg.id} {...msg} />)}
+              </div>
+            </>
+          )}
+        </div>
+        <Composer channel={channel} onSend={sendMessage} />
+      </Panel>
+
+      {showMembers && <MemberList />}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

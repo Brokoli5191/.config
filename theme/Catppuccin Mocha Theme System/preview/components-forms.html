@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Components — Form fields</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 10px; color: var(--text-muted); text-transform: lowercase; }
+  .input {
+    background: var(--bg-canvas);
+    border: 1px solid hsla(235,15%,53%,0.20);
+    color: var(--text);
+    font: 400 13px var(--font-mono);
+    letter-spacing: -0.05ch;
+    padding: 8px 10px;
+  }
+  .input.focus { border-color: var(--accent-2); outline: none; }
+  .input::placeholder { color: var(--text-dim); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .toggle { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text); }
+  .track { width: 32px; height: 16px; border: 1px solid hsla(235,15%,53%,0.20); position: relative; }
+  .track::after { content: ''; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; background: var(--text-dim); transition: 0.2s ease; }
+  .track.on { border-color: var(--accent-2); }
+  .track.on::after { left: 18px; background: var(--accent-2); }
+  .check { width: 14px; height: 14px; border: 1px solid hsla(235,15%,53%,0.20); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: var(--accent-2); }
+  .check.on { border-color: var(--accent-2); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ form fields ]</div>
+  <div class="stack">
+    <div class="row">
+      <div class="field">
+        <label>search</label>
+        <input class="input" placeholder="search songs, albums…" value="">
+      </div>
+      <div class="field">
+        <label>focused</label>
+        <input class="input focus" placeholder="search" value="catppuccin">
+      </div>
+    </div>
+    <div class="row" style="align-items:center">
+      <div class="toggle"><div class="track on"></div><span>panel-labels · on</span></div>
+      <div class="toggle"><div class="track"></div><span>transparency · off</span></div>
+    </div>
+    <div class="row" style="align-items:center">
+      <div class="toggle"><span class="check on">▪</span><span>unrounding</span></div>
+      <div class="toggle"><span class="check"></span><span>ascii titles</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

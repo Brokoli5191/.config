@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Components — Progress bars</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; gap: 16px; }
+  .demo { padding: 10px 12px; border: 1px solid hsla(235,15%,53%,0.20); transition: border-color 0.2s ease; }
+  .demo:hover { border-color: #b4befe; }
+  .demo .ttl { font-size: 10px; color: var(--text-muted); text-transform: lowercase; margin-bottom: 8px; }
+  .text-bar { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0; color: var(--accent-2); }
+  .text-bar .filled { color: var(--accent-2); }
+  .text-bar .empty { color: var(--text-dim); }
+  .text-bar .meta { color: var(--text-muted); margin-left: 8px; }
+  .line-bar { height: 4px; background: hsla(235,15%,53%,0.20); position: relative; }
+  .line-bar > i { display: block; height: 100%; background: var(--accent-2); }
+  .time { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--text-muted); margin-top: 4px; }
+  .now-playing {
+    display: flex; align-items: center; gap: 12px; padding: 10px;
+    border: 1px solid hsla(235,15%,53%,0.20);
+    transition: border-color 0.2s ease;
+  }
+  .now-playing:hover { border-color: #b4befe; }
+  .cover { width: 44px; height: 44px; background: #1a1a1a; border: 1px solid hsla(235,15%,53%,0.20); display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size: 11px; flex-shrink: 0; }
+  .info { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+  .title  { font-size: 12.5px; color: var(--text-strong); }
+  .artist { font-size: 11px; color: var(--text-muted); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ progress — text bar + thin bar ]</div>
+  <div class="stack">
+    <div class="demo">
+      <div class="ttl">text progress bar · discord activity</div>
+      <div class="text-bar">
+        <span class="filled">▰▰▰▰▰▰▰▰</span><span class="empty">▱▱▱▱▱▱▱▱</span>
+        <span class="meta">[ 2:14 / 4:32 ]</span>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="ttl">thin progress bar · spotify</div>
+      <div class="line-bar"><i style="width: 38%"></i></div>
+      <div class="time"><span>1:42</span><span>4:32</span></div>
+    </div>
+    <div class="now-playing">
+      <div class="cover">▒</div>
+      <div class="info"><span class="title">prelude in c · BWV 846</span><span class="artist">— j. s. bach</span></div>
+      <div style="font-size: 16px; color: var(--accent-2);">▶</div>
+    </div>
+  </div>
+</div>
+</body></html>

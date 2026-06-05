@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Colors — Text ramp</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 100px 80px 1fr; gap: 14px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); transition: background 0.15s ease; }
+  .row:hover { background: var(--hover); }
+  .row:last-child { border-bottom: 0; }
+  .token { font-size: 11px; color: var(--text-muted); }
+  .hex { font-size: 11px; color: var(--text-muted); }
+  .sample { font-size: 14px; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ text ramp — 5 stops ]</div>
+  <div class="stack">
+    <div class="row"><span class="token">--fg-1</span><span class="hex">#eef0fa</span><span class="sample" style="color:hsl(226,64%,95%)">over-accent white — used on lavender fills</span></div>
+    <div class="row"><span class="token">--fg-2 / text</span><span class="hex">#cdd6f4</span><span class="sample" style="color:#cdd6f4; font-weight:500">headings & important text</span></div>
+    <div class="row"><span class="token">--fg-3 / text</span><span class="hex">#bac2de</span><span class="sample" style="color:#bac2de">normal body text — most paragraphs land here</span></div>
+    <div class="row"><span class="token">--fg-4 / muted</span><span class="hex">#7f849c</span><span class="sample" style="color:#7f849c">icon buttons, channel names, labels</span></div>
+    <div class="row"><span class="token">--fg-5 / dim</span><span class="hex">#585b70</span><span class="sample" style="color:#585b70">timestamps, muted channels, disabled</span></div>
+  </div>
+</div>
+</body></html>

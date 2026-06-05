@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Colors — Status & Semantic</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: 90px 1fr 1fr 1fr 1fr 1fr; gap: 6px; align-items: stretch; }
+  .row + .row { margin-top: 4px; }
+  .role { font-size: 11px; color: var(--text-muted); padding: 8px 0; }
+  .stop { height: 44px; padding: 6px 8px; font-size: 10.5px; color: #11111b; display: flex; align-items: flex-end; transition: border-color 0.2s ease; }
+  .use { display: flex; gap: 16px; align-items: center; margin-top: 6px; font-size: 11px; color: var(--text-muted); }
+  .dot { width: 9px; height: 9px; display: inline-block; margin-right: 6px; vertical-align: middle; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ status & semantic ramps ]</div>
+  <div class="row">
+    <div class="role">red / dnd</div>
+    <div class="stop" style="background:hsl(343,81%,80%)">red-1</div>
+    <div class="stop" style="background:hsl(343,81%,75%)">red-2 #f38ba8</div>
+    <div class="stop" style="background:hsl(343,81%,75%)">red-3</div>
+    <div class="stop" style="background:hsl(343,81%,70%)">red-4</div>
+    <div class="stop" style="background:hsl(343,81%,65%)">red-5</div>
+  </div>
+  <div class="row">
+    <div class="role">green / online</div>
+    <div class="stop" style="background:hsl(115,54%,81%)">green-1</div>
+    <div class="stop" style="background:hsl(115,54%,76%)">green-2</div>
+    <div class="stop" style="background:hsl(115,54%,76%)">green-3</div>
+    <div class="stop" style="background:hsl(115,54%,71%)">green-4</div>
+    <div class="stop" style="background:hsl(115,54%,66%)">green-5</div>
+  </div>
+  <div class="row">
+    <div class="role">yellow / idle</div>
+    <div class="stop" style="background:hsl(41,86%,88%)">yellow-1</div>
+    <div class="stop" style="background:hsl(41,86%,83%)">yellow-2</div>
+    <div class="stop" style="background:hsl(41,86%,83%)">yellow-3</div>
+    <div class="stop" style="background:hsl(41,86%,78%)">yellow-4</div>
+    <div class="stop" style="background:hsl(41,86%,73%)">yellow-5</div>
+  </div>
+  <div class="row">
+    <div class="role">blue / info</div>
+    <div class="stop" style="background:hsl(199,76%,74%)">blue-1</div>
+    <div class="stop" style="background:hsl(199,76%,69%)">blue-2</div>
+    <div class="stop" style="background:hsl(199,76%,69%)">blue-3</div>
+    <div class="stop" style="background:hsl(199,76%,64%)">blue-4</div>
+    <div class="stop" style="background:hsl(199,76%,59%)">blue-5</div>
+  </div>
+  <div class="use">
+    <span><i class="dot" style="background:hsl(115,54%,76%)"></i>online</span>
+    <span><i class="dot" style="background:hsl(41,86%,83%)"></i>idle</span>
+    <span><i class="dot" style="background:hsl(343,81%,75%)"></i>dnd</span>
+    <span><i class="dot" style="background:#b4befe"></i>streaming</span>
+    <span><i class="dot" style="background:#7f849c"></i>offline</span>
+  </div>
+</div>
+</body></html>

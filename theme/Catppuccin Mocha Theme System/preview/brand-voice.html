@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Brand — Voice & tone</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .col { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid var(--border); transition: border-color 0.2s ease; }
+  .col:hover { border-color: #b4befe; }
+  .ttl { font-size: 10.5px; color: var(--text-muted); text-transform: lowercase; }
+  .yes { font-size: 12px; color: var(--text-strong); line-height: 1.5; }
+  .no  { font-size: 12px; color: var(--text-muted); line-height: 1.5; text-decoration: line-through; text-decoration-color: hsl(343,81%,75%); }
+  .check { color: hsl(115,54%,76%); }
+  .cross { color: hsl(343,81%,75%); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ voice & tone ]</div>
+  <div class="row">
+    <div class="col">
+      <span class="ttl"><span class="check">✓</span> in voice</span>
+      <div class="yes">"small repo of the themes & configs i use"</div>
+      <div class="yes">"put this folder into /spicetify/themes"</div>
+      <div class="yes">"edited system24 catppuccin mocha theme"</div>
+      <div class="yes">"turn on enable custom css & paste content"</div>
+    </div>
+    <div class="col">
+      <span class="ttl"><span class="cross">✗</span> off voice</span>
+      <div class="no">"Introducing the All-New Catppuccin Experience!"</div>
+      <div class="no">"🚀 Ship your themes faster than ever before"</div>
+      <div class="no">"Get Started — It's free!"</div>
+      <div class="no">"Built for creators. Designed for joy."</div>
+    </div>
+  </div>
+  <div class="meta">lowercase. first-person <em>i</em>. casual. terse. <code>&amp;</code> not <code>and</code>. no exclamation marks. no emoji.</div>
+</div>
+</body></html>

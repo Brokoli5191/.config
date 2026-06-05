@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Colors — Accent (Lavender)</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .ramp { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .stop { height: 86px; border: 1px solid var(--border); padding: 10px; display: flex; flex-direction: column; justify-content: space-between; color: #000; transition: border-color 0.2s ease; }
+  .stop:hover { border-color: #b4befe; }
+  .stop .role { font-size: 10px; opacity: 0.85; text-transform: lowercase; }
+  .stop .name { font-size: 12px; font-weight: 500; }
+  .stop .hex  { font-size: 11px; opacity: 0.85; }
+  .use { display: flex; gap: 8px; align-items: center; }
+  .btn { padding: 6px 14px; font: 500 12px var(--font-mono); letter-spacing: -0.05ch; border: 1px solid var(--accent-2); background: transparent; color: var(--accent-2); cursor: default; }
+  .btn.solid { background: var(--accent-2); color: #000; }
+  .pill { font-size: 11px; color: var(--accent-2); border-left: 2px solid var(--accent-2); padding-left: 8px; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ accent — lavender ramp ]</div>
+  <div class="ramp">
+    <div class="stop" style="background:hsl(232,97%,90%)"><span class="role">--accent-1</span><div><div class="name">links</div><div class="hex">hsl(232 97% 90%)</div></div></div>
+    <div class="stop" style="background:hsl(232,97%,85%)"><span class="role">--accent-2</span><div><div class="name">default</div><div class="hex">#b4befe</div></div></div>
+    <div class="stop" style="background:hsl(232,97%,85%)"><span class="role">--accent-3</span><div><div class="name">button</div><div class="hex">hsl(232 97% 85%)</div></div></div>
+    <div class="stop" style="background:hsl(232,97%,80%)"><span class="role">--accent-4</span><div><div class="name">hover</div><div class="hex">hsl(232 97% 80%)</div></div></div>
+    <div class="stop" style="background:hsl(232,97%,75%)"><span class="role">--accent-5</span><div><div class="name">press</div><div class="hex">hsl(232 97% 75%)</div></div></div>
+  </div>
+  <div class="use">
+    <button class="btn solid">primary</button>
+    <button class="btn">secondary</button>
+    <span class="pill">replying to @user</span>
+  </div>
+  <div class="meta">lavender replaces spotify-green and discord-blurple wholesale. used as the singular accent.</div>
+</div>
+</body></html>

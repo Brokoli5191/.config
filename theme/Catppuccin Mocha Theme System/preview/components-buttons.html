@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Components — Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: flex-start; }
+  .col { display: flex; flex-direction: column; gap: 10px; padding: 10px; border: 1px solid var(--border); transition: border-color 0.2s ease; }
+  .col:hover { border-color: #b4befe; }
+  .col .ttl { font-size: 10px; color: var(--text-muted); text-transform: lowercase; }
+  .btn {
+    font: 400 12.5px var(--font-mono);
+    letter-spacing: -0.05ch;
+    padding: 7px 16px;
+    border: 1px solid var(--accent-2);
+    background: transparent;
+    color: var(--accent-2);
+    border-radius: 0;
+    cursor: default;
+    align-self: flex-start;
+  }
+  .btn.solid    { background: var(--accent-2); color: #000; }
+  .btn.hover    { background: hsl(232,97%,80%); color: #000; border-color: hsl(232,97%,80%); }
+  .btn.press    { background: hsl(232,97%,75%); color: #000; border-color: hsl(232,97%,75%); }
+  .btn.ghost    { border-color: hsla(235,15%,53%,0.20); color: var(--text); }
+  .btn.ghost:hover, .btn.ghost.hover { background: hsla(235,15%,53%,0.10); border-color: var(--accent-2); color: var(--text-strong); }
+  .btn.danger   { border-color: hsl(343,81%,75%); color: hsl(343,81%,75%); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ buttons — primary · secondary · ghost ]</div>
+  <div class="grid">
+    <div class="col">
+      <span class="ttl">primary · solid</span>
+      <button class="btn solid">play</button>
+      <button class="btn hover">play</button>
+      <button class="btn press">play</button>
+    </div>
+    <div class="col">
+      <span class="ttl">secondary · outline</span>
+      <button class="btn">follow</button>
+      <button class="btn" style="background: hsla(235,15%,53%,0.10)">follow</button>
+      <button class="btn" style="background: hsla(235,15%,53%,0.20)">following</button>
+    </div>
+    <div class="col">
+      <span class="ttl">ghost / utility</span>
+      <button class="btn ghost">settings</button>
+      <button class="btn ghost hover">settings</button>
+      <button class="btn danger">leave server</button>
+    </div>
+  </div>
+  <div class="meta">rest · hover · press. zero radius, hairline border, monospace label. lavender or muted-grey only.</div>
+</div>
+</body></html>

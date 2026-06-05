@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Brand — Logo & marks</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 22px; align-items: center; }
+  .logo-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px; border: 1px solid transparent; transition: border-color 0.2s ease; }
+  .logo-cell:hover { border-color: #b4befe; }
+  .logo-cell img { width: 96px; height: 96px; display: block; background: #000; }
+  .logo-cell.circle img { border-radius: 50%; }
+  .logo-cell .ttl { font-size: 10.5px; color: var(--text-muted); text-transform: lowercase; }
+  .body-side { flex: 1; }
+  .body-side h3 { margin: 0 0 6px; font-size: 14px; font-weight: 500; color: var(--text-strong); }
+  .body-side p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ brand mark — catppuccin cat ]</div>
+  <div class="row">
+    <div class="logo-cell circle"><img src="../assets/catppuccin-circle.png" alt=""><span class="ttl">circle</span></div>
+    <div class="logo-cell"><img src="../assets/catppuccin-macchiato-square.png" alt=""><span class="ttl">macchiato square</span></div>
+    <div class="logo-cell"><img src="../assets/catppuccin-macchiato-squircle.png" alt=""><span class="ttl">squircle</span></div>
+    <div class="body-side">
+      <h3>three poses, one cat</h3>
+      <p>the catppuccin cat is the only figurative mark. it's used as a tile in the discord dms button and as the favicon of mock screens. always on a colored or black background — never on white.</p>
+    </div>
+  </div>
+</div>
+</body></html>

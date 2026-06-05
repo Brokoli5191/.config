@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Spacing & Radii</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .gap-row { display: flex; align-items: flex-end; gap: 10px; }
+  .bar { background: var(--accent-2); height: 18px; }
+  .bar-label { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+  .col { display: flex; flex-direction: column; align-items: center; }
+  .radii { display: flex; gap: 18px; align-items: flex-end; }
+  .box { width: 60px; height: 50px; background: #1a1a1a; border: 1px solid var(--accent-2); display: flex; align-items: flex-end; justify-content: center; font-size: 10px; color: var(--text-muted); padding-bottom: 4px; transition: border-color 0.2s ease; }
+  .box:hover { border-color: #eef0fa; }
+  .note { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ spacing scale + zero-radius rule ]</div>
+  <div style="display:flex; gap:32px; align-items:flex-end;">
+    <div class="col"><div class="bar" style="width:4px"></div><div class="bar-label">4 · gap-1</div></div>
+    <div class="col"><div class="bar" style="width:8px"></div><div class="bar-label">8 · gap-2</div></div>
+    <div class="col"><div class="bar" style="width:12px"></div><div class="bar-label">12 · gap-3 ★</div></div>
+    <div class="col"><div class="bar" style="width:16px"></div><div class="bar-label">16 · gap-4</div></div>
+    <div class="col"><div class="bar" style="width:24px"></div><div class="bar-label">24 · gap-5</div></div>
+    <div class="col"><div class="bar" style="width:32px"></div><div class="bar-label">32 · gap-6</div></div>
+  </div>
+  <div class="radii">
+    <div class="box" style="border-radius:0">0px</div>
+    <div class="box" style="border-radius:2px; opacity:0.5">2 ✗</div>
+    <div class="box" style="border-radius:8px; opacity:0.5">8 ✗</div>
+    <div class="box" style="border-radius:50%; opacity:0.8; width:50px; height:50px;">avatar</div>
+  </div>
+  <div class="note">★ 12px is the canonical panel gap (system24 <code>--gap</code>). border-radius is <strong style="color:var(--text-strong)">0</strong> everywhere except avatar circles.</div>
+</div>
+</body></html>

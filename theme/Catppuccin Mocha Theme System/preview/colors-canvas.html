@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Colors — Canvas & Surfaces</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .card { gap: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .sw { padding: 12px 12px 10px; min-height: 96px; border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; gap: 4px; transition: border-color 0.2s ease; }
+  .sw:hover { border-color: #b4befe; }
+  .sw .role { font-size: 10px; color: var(--text-muted); text-transform: lowercase; }
+  .sw .val { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .sw .name { font-weight: 500; color: var(--text-strong); font-size: 12px; }
+  .sw .hex  { font-size: 11px; color: var(--text-muted); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ canvas + surfaces ]</div>
+  <div class="grid">
+    <div class="sw" style="background:#000000; border:1px solid rgba(255,255,255,0.18)">
+      <span class="role">bg-canvas</span>
+      <div class="val"><span class="name">canvas</span><span class="hex">#000000</span></div>
+    </div>
+    <div class="sw" style="background:#0a0a0a">
+      <span class="role">bg-panel</span>
+      <div class="val"><span class="name">panel</span><span class="hex">#000000</span></div>
+    </div>
+    <div class="sw" style="background:#1a1a1a">
+      <span class="role">bg-surface</span>
+      <div class="val"><span class="name">surface</span><span class="hex">#1a1a1a</span></div>
+    </div>
+    <div class="sw" style="background:#2a2a2a">
+      <span class="role">bg-surface-2</span>
+      <div class="val"><span class="name">surface-2</span><span class="hex">#2a2a2a</span></div>
+    </div>
+  </div>
+  <div class="meta">pure OLED black canvas, two near-black surfaces. borders create separation — not fills.</div>
+</div>
+</body></html>

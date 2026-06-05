@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Components — Message bubble</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; }
+  .msg { transition: background 0.15s ease; display: flex; gap: 12px; padding: 6px 10px; border-left: 4px solid transparent; }
+  .msg:hover { background: rgba(0,0,0,0.4); }
+  .msg.mention { background: linear-gradient(to right, color-mix(in hsl, #b4befe, transparent 90%) 40%, transparent); border-left-color: #b4befe; }
+  .msg.reply   { background: linear-gradient(to right, color-mix(in hsl, #bac2de, transparent 90%) 40%, transparent); border-left-color: #bac2de; }
+  .av { width: 36px; height: 36px; border-radius: 50%; background: #1a1a1a; border: 1px solid hsla(235,15%,53%,0.20); flex-shrink: 0; display:flex; align-items:center; justify-content:center; color: var(--accent-2); font-size: 14px; }
+  .body { display: flex; flex-direction: column; gap: 2px; }
+  .head { display: flex; gap: 8px; align-items: baseline; font-size: 12px; }
+  .name { color: var(--accent-2); font-weight: 500; }
+  .ts   { color: var(--text-dim); font-size: 10.5px; }
+  .text { color: var(--text); font-size: 13px; }
+  .text .mention-tag { color: var(--accent-2); background: color-mix(in hsl, #b4befe, transparent 80%); padding: 0 2px; }
+  .reply-arrow { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; padding-left: 4px; }
+  .reply-arrow .who { color: var(--accent-2); }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ messages — rest · mention · reply ]</div>
+  <div class="stack">
+    <div class="msg">
+      <div class="av">★</div>
+      <div class="body">
+        <div class="head"><span class="name">brokoli</span><span class="ts">today at 14:02</span></div>
+        <div class="text">just pushed the new theme. should drop the patch tomorrow.</div>
+      </div>
+    </div>
+    <div class="msg mention">
+      <div class="av">◆</div>
+      <div class="body">
+        <div class="head"><span class="name">refact0r</span><span class="ts">today at 14:05</span></div>
+        <div class="text">heads up <span class="mention-tag">@brokoli</span> — system24 v2.1 ships with new ascii loaders</div>
+      </div>
+    </div>
+    <div class="msg reply">
+      <div class="av">▲</div>
+      <div class="body">
+        <div class="reply-arrow">↳ replying to <span class="who">@brokoli</span> — "just pushed the new theme…"</div>
+        <div class="head"><span class="name">joe</span><span class="ts">today at 14:07</span></div>
+        <div class="text">nice, will test on linux tonight</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

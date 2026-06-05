@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Components — Panel labels & list rows</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .panel {
+    border: 1px solid hsla(235,15%,53%,0.20);
+    padding: 0;
+    transition: border-color 0.2s ease;
+  }
+  .panel:hover { border-color: #b4befe; }
+  .panel-h { display: flex; justify-content: space-between; padding: 6px 10px; border-bottom: 1px solid hsla(235,15%,53%,0.20); font-size: 10.5px; color: var(--text-muted); text-transform: lowercase; }
+  .panel-h .right { color: var(--text-dim); }
+  .row { padding: 6px 10px; font-size: 12.5px; color: var(--text); display: flex; align-items: center; gap: 10px; cursor: default; border-left: 2px solid transparent; transition: background 0.15s ease; }
+  .row .hash { color: var(--text-dim); width: 14px; text-align: center; }
+  .row:hover { background: hsla(235,15%,53%,0.10); }
+  .row.active { background: hsla(235,15%,53%,0.20); border-left-color: var(--accent-2); color: var(--text-strong); }
+  .row.unread .hash { color: var(--text-strong); }
+  .row .badge { margin-left: auto; background: hsl(343,81%,75%); color: #000; font-size: 10px; padding: 0 6px; line-height: 1.4; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ panel labels + list rows ]</div>
+  <div class="panel">
+    <div class="panel-h"><span>[ channels ]</span><span class="right">3 unread</span></div>
+    <div class="row"><span class="hash">#</span>welcome</div>
+    <div class="row unread"><span class="hash">#</span>announcements<span class="badge">2</span></div>
+    <div class="row active"><span class="hash">#</span>design-system</div>
+    <div class="row"><span class="hash">#</span>random</div>
+    <div class="row" style="color:var(--text-dim)"><span class="hash">#</span>archive</div>
+  </div>
+  <div class="meta">panel labels are <code>11px · 500 · lowercase · muted</code>. active rows get a 2px lavender left-border + 20% tint. panel border swaps to lavender on hover (0.2s ease).</div>
+</div>
+</body></html>

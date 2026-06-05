@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Borders & Hover ring</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .panel { background: #000; padding: 14px; min-height: 80px; display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: var(--text); transition: border-color 0.2s ease; }
+  .panel .ttl { font-size: 10px; color: var(--text-muted); text-transform: lowercase; }
+  .p-rest    { border: 1px solid hsla(235,15%,53%,0.20); }
+  .p-light   { border: 1px solid hsla(235,15%,53%,0.10); }
+  .p-hover   { border: 1px solid #b4befe; }
+  .p-focus   { border: 1px solid hsla(235,15%,53%,0.20); box-shadow: 0 0 0 1px #b4befe; }
+  .div-strip { height: 1px; background: hsla(235,15%,53%,0.20); }
+  .div-strip.thick { height: 4px; background: linear-gradient(to right, transparent, #b4befe 50%, transparent); }
+  .legend { display: flex; gap: 14px; font-size: 11px; color: var(--text-muted); flex-wrap: wrap; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ borders — hairlines + hover ring ]</div>
+  <div class="row">
+    <div class="panel p-rest">
+      <span class="ttl">rest</span>
+      <span>1px · <code>--border</code></span>
+      <span style="color:var(--text-muted)">hsla(235 15% 53% / .2)</span>
+    </div>
+    <div class="panel p-light">
+      <span class="ttl">light</span>
+      <span>1px · <code>--border-light</code></span>
+      <span style="color:var(--text-muted)">hsla(235 15% 53% / .1)</span>
+    </div>
+    <div class="panel p-hover">
+      <span class="ttl">hover</span>
+      <span>1px · <code>--accent-2</code></span>
+      <span style="color:var(--text-muted)">→ 0.2s ease</span>
+    </div>
+  </div>
+  <div class="legend">
+    <span>thin divider · 1px</span><div class="div-strip" style="flex:1; align-self:center"></div>
+  </div>
+  <div class="legend">
+    <span>unread divider · 4px</span><div class="div-strip thick" style="flex:1; align-self:center"></div>
+  </div>
+  <div class="meta">borders, not shadows, separate panels. on hover, the border swaps to lavender — the system's most distinctive interaction.</div>
+</div>
+</body></html>

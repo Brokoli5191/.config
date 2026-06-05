@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Type — Body scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: 130px 1fr 90px; gap: 14px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--border); transition: background 0.15s ease; }
+  .row:hover { background: var(--hover); }
+  .row:last-child { border-bottom: 0; }
+  .token { font-size: 11px; color: var(--text-muted); }
+  .meta-r { font-size: 11px; color: var(--text-muted); text-align: right; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ body type scale — JetBrains Mono / DM Mono ]</div>
+  <div class="row"><span class="token">h1</span><span style="font-size:24px; font-weight:500; color:var(--text-strong)">heading one</span><span class="meta-r">24 / 500</span></div>
+  <div class="row"><span class="token">h2</span><span style="font-size:20px; font-weight:500; color:var(--text-strong)">heading two</span><span class="meta-r">20 / 500</span></div>
+  <div class="row"><span class="token">h3</span><span style="font-size:16px; font-weight:500; color:var(--text-strong)">heading three</span><span class="meta-r">16 / 500</span></div>
+  <div class="row"><span class="token">body</span><span style="font-size:14px;">the quick brown fox jumps over the lazy dog</span><span class="meta-r">14 / 400</span></div>
+  <div class="row"><span class="token">small</span><span style="font-size:12px; color:var(--text-muted)">timestamps, captions, helper text</span><span class="meta-r">12 / 400</span></div>
+  <div class="row"><span class="token">xsmall · label</span><span style="font-size:11px; font-weight:500; color:var(--text-muted); text-transform:lowercase">[ panel label ]</span><span class="meta-r">11 / 500</span></div>
+</div>
+</body></html>

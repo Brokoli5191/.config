@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Colors — Catppuccin Mocha palette</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .chip { aspect-ratio: 1/1.1; padding: 6px; border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: flex-end; color: #11111b; font-size: 9.5px; line-height: 1.1; transition: border-color 0.2s ease; }
+  .chip:hover { border-color: #b4befe; }
+  .chip .n { font-weight: 600; }
+  .chip .h { opacity: 0.75; font-size: 9px; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">[ catppuccin mocha — full palette ]</div>
+  <div class="grid">
+    <div class="chip" style="background:#f5e0dc"><span class="n">rosewater</span><span class="h">f5e0dc</span></div>
+    <div class="chip" style="background:#f2cdcd"><span class="n">flamingo</span><span class="h">f2cdcd</span></div>
+    <div class="chip" style="background:#f5c2e7"><span class="n">pink</span><span class="h">f5c2e7</span></div>
+    <div class="chip" style="background:#cba6f7"><span class="n">mauve</span><span class="h">cba6f7</span></div>
+    <div class="chip" style="background:#f38ba8"><span class="n">red</span><span class="h">f38ba8</span></div>
+    <div class="chip" style="background:#eba0ac"><span class="n">maroon</span><span class="h">eba0ac</span></div>
+    <div class="chip" style="background:#fab387"><span class="n">peach</span><span class="h">fab387</span></div>
+    <div class="chip" style="background:#f9e2af"><span class="n">yellow</span><span class="h">f9e2af</span></div>
+    <div class="chip" style="background:#a6e3a1"><span class="n">green</span><span class="h">a6e3a1</span></div>
+    <div class="chip" style="background:#94e2d5"><span class="n">teal</span><span class="h">94e2d5</span></div>
+    <div class="chip" style="background:#89dceb"><span class="n">sky</span><span class="h">89dceb</span></div>
+    <div class="chip" style="background:#74c7ec"><span class="n">sapphire</span><span class="h">74c7ec</span></div>
+    <div class="chip" style="background:#89b4fa"><span class="n">blue</span><span class="h">89b4fa</span></div>
+    <div class="chip" style="background:#b4befe; outline: 2px solid #b4befe; outline-offset: -1px;"><span class="n">★ lavender</span><span class="h">b4befe</span></div>
+  </div>
+  <div class="meta">14 accent hues. only <strong style="color:var(--text-strong)">lavender</strong> is used as primary; the rest are reserved for semantic roles (errors, status, etc.).</div>
+</div>
+</body></html>
